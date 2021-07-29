@@ -45,4 +45,14 @@ createROLE(role) {
     return this.connection.query("INSERT INTO role SET ?", role);
 }
 
-deleteRole 
+deleteRole(roleID) {
+    return this.connection.query("DELETE FROM role WHERE id = ?", roleID);
+}
+
+findDepartments() {
+    return this.connection.query(
+        "SELECT department.id, department.name FROM department;"
+        );
+}
+
+viewDepartmentBudget
