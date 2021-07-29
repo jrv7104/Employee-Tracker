@@ -21,3 +21,10 @@ findPossibleManagers(employeeID) {
 createEmployee(employee) {
     return this.connection.query("INSERT INTO employee SET ?", employee);
 }
+
+deleteEMPLOYEE (employeeId) {
+    return this.connection.query(
+        "DELETE FROM employee WHERE id = ?",
+    );
+}
+
