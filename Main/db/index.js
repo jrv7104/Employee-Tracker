@@ -28,3 +28,21 @@ deleteEMPLOYEE (employeeId) {
     );
 }
 
+updateEMPLOYEE(employeeID, roleID) {
+    return this.connection.query(
+        "UPDATE employee SET role_id = ? WHERE id = ?",
+        [roleId, employeeId]
+    );
+}
+
+findRole() {
+    return this.connection.query(
+        "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;""
+    );
+}
+
+createROLE(role) {
+    return this.connection.query("INSERT INTO role SET ?", role);
+}
+
+deleteRole 
