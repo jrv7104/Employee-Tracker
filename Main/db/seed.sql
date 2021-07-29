@@ -19,3 +19,13 @@ INSERT INTO role
 ('Lawyer', 16000, 4),
 ('Legal Team Manager', 200000, 4);
 
+INSERT INTO employee
+    (first_name, last_name, role_id, manager_id)
+    ('', '', , ,)
+    ('', '', , ,)
+    ('', '', , ,)
+    ('', '', , ,)
+    ('', '', , ,)
+    ('', '', , ,)
+    ('', '', , ,)
+    ('', '', , ,)
