@@ -55,5 +55,17 @@ function loadPrompts() {
                     name: "Remove Role",
                     value: "REMOVE_ROLE"
                 },
-//continue on line 57
+                {
+                    name: "View All Departments",
+                    value: "VIEW_DEPARTMENTS"
+                },
+                {
+                    name: "Add Department",
+                    value: "ADD_DEPARTMENT"
+                },
+                {
+                    name: "Remove Department",
+                    value: "REMOVE_DEPARTMENT"
+                },
+
             
