@@ -86,9 +86,18 @@ function loadPrompts() {
         case "VIEW_EMPLOYEES_BY_DEPARTMENT":
             viewEmployeesByDepartment();
             break;
-            case "VIEW_EMPLOYEES_BY_MANAGER":
+        case "VIEW_EMPLOYEES_BY_MANAGER":
                 viewEmployeesByManager();
                 break;
-            case "ADD_EMPLOYEE":
+        case "ADD_EMPLOYEE":
                 addEmployee();
-                break;        
+                break;
+        case "REMOVE_EMPLOYEE":
+                removeEmployee();
+                break;
+        case "UPDATE_EMPLOYEE_ROLE":
+                updateEmployeeRole();
+                break;
+        case "UPDATE_EMPLOYEE_MANAGER":
+                updateEmployeeManager();
+                break;    
