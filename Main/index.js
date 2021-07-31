@@ -77,5 +77,11 @@ function loadPrompts() {
                 }
             ]
         }
-//continue line 86
+]).then(res => {
+    let choice = res.choice;
+    switch(choice) {
+        case "VIEW_EMPLOYEES"
+            viewEmployees();
+            break;
+        case
             
