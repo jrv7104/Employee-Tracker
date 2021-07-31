@@ -13,7 +13,7 @@ findEmployees()  {
     }
 findPossibleManagers(employeeID) {
     return this.connection.query(
-        'SELECT id, first_name, last_name FROM employe WHERE id != ?',
+        'SELECT id, first_name, last_name FROM employee WHERE id != ?',
         employeeId
         );
     }

@@ -80,7 +80,7 @@ function loadPrompts() {
 ]).then(res => {
     let choice = res.choice;
     switch(choice) {
-        case "VIEW_EMPLOYEES"
+        case "VIEW_EMPLOYEES":
             viewEmployees();
             break;
         case "VIEW_EMPLOYEES_BY_DEPARTMENT":
@@ -108,10 +108,10 @@ function loadPrompts() {
                 addDepartment();
                 break;
         case "REMOVE_DEPARTMENT":
-                removeDepartment();
+                deleteDepartment();
                 break;
         case "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT":
-                viewUtilizedBudgetByDepartment();
+                viewDepartmentBudget();
                 break;
         case "VIEW_ROLES":
                 viewRoles();
