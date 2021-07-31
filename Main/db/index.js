@@ -22,13 +22,13 @@ createEmployee(employee) {
     return this.connection.query("INSERT INTO employee SET ?", employee);
     }
 
-deleteEMPLOYEE (employeeId) {
+deleteEmployee (employeeId) {
     return this.connection.query(
         "DELETE FROM employee WHERE id = ?",
         );
     }
 
-updateEMPLOYEE(employeeID, roleID) {
+updateEmployee(employeeID, roleID) {
     return this.connection.query(
         "UPDATE employee SET role_id = ? WHERE id = ?",
         [roleId, employeeId]
