@@ -167,8 +167,7 @@ function findEmployeesByDepartment() {
 function findEmployeeByManager() {
     db.findEmployees().then(([rows]) => {
         let managers = rows;
-        const managerChoices = managers.map(({ id, first_name, last_name })
-         => ({
+        const managerChoices = managers.map(({ id, first_name, last_name }) => ({
             name: `${first_name} ${last_name}`,
             value: id
           }));
@@ -265,8 +264,7 @@ function findEmployeeByManager() {
         db.findAllEmployees()
           .then(([rows]) => {
             let employees = rows;
-            const employeeChoices = employees.map(({ id, first_name, last_name })
-             => ({
+            const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
               name: `${first_name} ${last_name}`,
               value: id
             }));
