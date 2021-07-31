@@ -253,7 +253,7 @@ function findEmployeeByManager() {
                         choices: roleChoices
                       }
                     ])
-                      .then(res => db.updateEmployeeRole(employeeId, res.roleId))
+                      .then(res => db.updateEmployee(employeeId, res.roleId))
                       .then(() => console.log("Updated employee's role"))
                       .then(() => loadMainPrompts())
                   });
@@ -261,3 +261,47 @@ function findEmployeeByManager() {
           })
       }
       
+      function updateEmployeeManager() {
+        db.findAllEmployees()
+          .then(([rows]) => {
+            let employees = rows;
+            const employeeChoices = employees.map(({ id, first_name, last_name })
+             => ({
+              name: `${first_name} ${last_name}`,
+              value: id
+            }));
+      
+            prompt([
+              {
+                type: "list",
+                name: "employeeId",
+                message: "Which employee's manager needs to be changed?",
+                choices: employeeChoices
+              }
+            ])
+              .then(res => {
+                let employeeId = res.employeeId
+                db.findPossibleManagers(employeeId)
+                  .then(([rows]) => {
+                    let managers = rows;
+                    const managerChoices = managers.map(({ id, first_name, last_name }) => ({
+                      name: `${first_name} ${last_name}`,
+                      value: id
+                    }));
+      
+                    prompt([
+                      {
+                        type: "list",
+                        name: "managerId",
+                        message:
+                          "Which employee will you choose for the manager for the employee?",
+                        choices: managerChoices
+                      }
+                    ])
+                      .then(res => db.updateEmployeeManager(employeeId, res.managerId))
+                      .then(() => console.log("Updated employee's manager"))
+                      .then(() => loadMainPrompts())
+                  })
+              })
+          })
+      }
