@@ -373,4 +373,27 @@ function deleteRole() {
       })
   }
 
-  
+  function addDepartment() {
+    prompt([
+      {
+        name: "name",
+        message: "What is the department name?"
+      }
+    ])
+      .then(res => {
+        let name = res;
+        db.createDepartment(name)
+          .then(() => console.log(`Added ${name.name} to the database`))
+          .then(() => loadMainPrompts())
+      })
+  }
+
+  function viewDepartments() {
+    db.findAllDepartments()
+      .then(([rows]) => {
+        let departments = rows;
+        console.log("\n");
+        console.table(departments);
+      })
+      .then(() => loadMainPrompts());
+  }
