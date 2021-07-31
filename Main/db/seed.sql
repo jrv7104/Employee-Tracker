@@ -1,12 +1,12 @@
-USE employees,
+USE employees;
 
-INSERT INTO department,
+INSERT INTO department
 (name)
 VALUES
 ('Sales')
 ('Finance')
 ('Engineering')
-('Legal')
+('Legal');
 
 INSERT INTO role
 (title, salary, department_id)
@@ -30,4 +30,4 @@ VALUES
     ('Gina', 'Linetti', 5, NULL,)
     ('Terry', 'Jeffords', 6, 6,)
     ('Madeline', 'Wuntch', 7, NULL,)
-    ('Raymond', 'Holt', 8, 8,)
+    ('Raymond', 'Holt', 8, 8,);
