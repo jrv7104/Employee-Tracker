@@ -419,3 +419,15 @@ function deleteRole() {
       })
       .then(() => loadMainPrompts());
   }
+
+  function viewDepartmentBudget() {
+    db.viewDepartmentBudgets()
+      .then(([rows]) => {
+        let departments = rows;
+        console.log("\n");
+        console.table(departments);
+      })
+      .then(() => loadMainPrompts());
+  }
+
+  
