@@ -349,4 +349,28 @@ function viewRoles () {
       .then(() => loadMainPrompts());
   }
 
+function deleteRole() {
+    db.findAllRoles()
+      .then(([rows]) => {
+        let roles = rows;
+        const roleChoices = roles.map(({ id, title }) => ({
+          name: title,
+          value: id
+        }));
+  
+        prompt([
+          {
+            type: "list",
+            name: "roleId",
+            message:
+              "What role will be deleted? (Warning: This will also delete employees attached with the role)",
+            choices: roleChoices
+          }
+        ])
+          .then(res => db.removeRole(res.roleId))
+          .then(() => console.log("Role removed from the database"))
+          .then(() => loadMainPrompts())
+      })
+  }
 
+  
