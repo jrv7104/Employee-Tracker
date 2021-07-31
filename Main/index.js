@@ -96,7 +96,7 @@ function loadPrompts() {
                 deleteEmployee();
                 break;
         case "UPDATE_EMPLOYEE_ROLE":
-                updateEmployeeRole();
+                updateEmployee();
                 break;
         case "UPDATE_EMPLOYEE_MANAGER":
                 updateEmployeeManager();
@@ -218,7 +218,7 @@ function findEmployeeByManager() {
       }
 
       function updateEmployee() {
-        db.findAllEmployees()
+        db.findEmployees()
           .then(([rows]) => {
             let employees = rows;
             const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
@@ -236,7 +236,7 @@ function findEmployeeByManager() {
             ])
               .then(res => {
                 let employeeId = res.employeeId;
-                db.findAllRoles()
+                db.findRole()
                   .then(([rows]) => {
                     let roles = rows;
                     const roleChoices = roles.map(({ id, title }) => ({
@@ -261,7 +261,7 @@ function findEmployeeByManager() {
       }
       
       function updateEmployeeManager() {
-        db.findAllEmployees()
+        db.findEmployees()
           .then(([rows]) => {
             let employees = rows;
             const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
@@ -338,13 +338,13 @@ function addRole() {
   }
 
 function viewRoles () {
-    db.findAllRoles()
+    db.findRole()
       .then(([rows]) => {
         let roles = rows;
         console.log("\n");
         console.table(roles);
       })
-      .then(() => loadMainPrompts());
+      .then(() => loadPrompts());
   }
 
 function deleteRole() {
@@ -409,13 +409,13 @@ function deleteRole() {
   }
 
   function viewDepartments() {
-    db.findAllDepartments()
+    db.findDepartments()
       .then(([rows]) => {
         let departments = rows;
         console.log("\n");
         console.table(departments);
       })
-      .then(() => loadMainPrompts());
+      .then(() => loadPrompts());
   }
 
   function viewDepartmentBudget() {
@@ -425,7 +425,7 @@ function deleteRole() {
         console.log("\n");
         console.table(departments);
       })
-      .then(() => loadMainPrompts());
+      .then(() => loadPrompts());
   }
 
   function addEmployee () {
