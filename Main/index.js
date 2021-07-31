@@ -64,16 +64,16 @@ function loadPrompts() {
                     value: "ADD_DEPARTMENT"
                 },
                 {
-                    name: "Remove Department",
-                    value: "REMOVE_DEPARTMENT"
+                    name: "Delete Department",
+                    value: "DELETE_DEPARTMENT"
                 },
                 {
                     name: "View Total Utilized Budget By Department",
-                    value: "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT"
+                    value: "VIEW_BUDGET_BY_DEPARTMENT"
                 },
                 {
-                    name: "Quit",
-                    value: "QUIT"
+                    name: "Exit",
+                    value: "EXIT"
                 }
             ]
         }
@@ -84,16 +84,16 @@ function loadPrompts() {
             viewEmployees();
             break;
         case "VIEW_EMPLOYEES_BY_DEPARTMENT":
-            viewEmployeesByDepartment();
+            findEmployeesByDepartment();
             break;
         case "VIEW_EMPLOYEES_BY_MANAGER":
-                viewEmployeesByManager();
+                findEmployeeByManager();
                 break;
         case "ADD_EMPLOYEE":
                 addEmployee();
                 break;
         case "REMOVE_EMPLOYEE":
-                removeEmployee();
+                deleteEmployee();
                 break;
         case "UPDATE_EMPLOYEE_ROLE":
                 updateEmployeeRole();
@@ -123,7 +123,7 @@ function loadPrompts() {
                 removeRole();
                 break;
             default:
-                quit();
+                exit();
         }
     }
 )
@@ -195,7 +195,7 @@ function findEmployeeByManager() {
     }
 
     function deleteEmployee() {
-        db.findAllEmployees()
+        db.findEmployees()
           .then(([rows]) => {
             let employees = rows;
             const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
@@ -211,7 +211,7 @@ function findEmployeeByManager() {
                 choices: employeeChoices
               }
             ])
-              .then(res => db.removeEmployee(res.employeeId))
+              .then(res => db.deleteEmployee(res.employeeId))
               .then(() => console.log("Removed employee from the database"))
               .then(() => loadMainPrompts())
           })
@@ -443,7 +443,7 @@ function deleteRole() {
         let firstName = res.first_name;
         let lastName = res.last_name;
   
-        db.findAllRoles()
+        db.findRole()
           .then(([rows]) => {
             let roles = rows;
             const roleChoices = roles.map(({ id, title }) => ({
@@ -460,7 +460,7 @@ function deleteRole() {
                 .then(res => {
                   let roleId = res.roleId;
     
-                  db.findAllEmployees()
+                  db.findEmployees()
                     .then(([rows]) => {
                       let employees = rows;
                       const managerChoices = employees.map(({ id, first_name, last_name }) => ({
@@ -489,7 +489,7 @@ function deleteRole() {
                         .then(() => console.log(
                           `Added ${firstName} ${lastName} to the database`
                         ))
-                        .then(() => loadMainPrompts())
+                        .then(() => loadPrompts())
                     })
                 })
             })
