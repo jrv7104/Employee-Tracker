@@ -139,4 +139,10 @@ function viewEmployees() {
     .then(() => loadPrompts());
 }
 
-
+function findEmployeesByDepartment() {
+    db.findDepartments().then(([rows]) => {
+        let departments = rows;
+        const departmentChoices = departments.map (({ id, name }) => ({
+            name: name,
+            value: id
+        }));
