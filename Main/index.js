@@ -100,4 +100,14 @@ function loadPrompts() {
                 break;
         case "UPDATE_EMPLOYEE_MANAGER":
                 updateEmployeeManager();
-                break;    
+                break;
+        case "VIEW_DEPARTMENTS":
+                viewDepartments();
+                break;
+            case "ADD_DEPARTMENT":
+                addDepartment();
+                break;
+            case "REMOVE_DEPARTMENT":
+                removeDepartment();
+                    break;                
+                
