@@ -47,5 +47,13 @@ function loadPrompts() {
                     name: "View All Roles",
                     value: "VIEW_ROLES"
                 },
-
+                {
+                    name: "Add Role",
+                    value: "ADD_ROLE"
+                },
+                {
+                    name: "Remove Role",
+                    value: "REMOVE_ROLE"
+                },
+//continue on line 57
             
