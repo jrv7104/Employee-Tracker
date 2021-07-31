@@ -24,8 +24,8 @@ function loadPrompts() {
                     value: "VIEW_EMPLOYEES_BY_DEPARTMENT"
                 },
                 {
-                    name: "View All Employees By Manager",
-                    value: "VIEW_EMPLOYEES_BY_MANAGER"
+                    name: "View All Possible Managers",
+                    value: "VIEW_POSSIBLE_MANAGERS"
                 },
                 {
                     name: "Add Employee",
@@ -128,4 +128,15 @@ function loadPrompts() {
     }
 )
 }
-                
+
+function viewEmployees() {
+    db.findEmployees()
+    .then(([rows]) => {
+        let employees = rows;
+        console.log("\n");
+        console.table(employees);
+    })
+    .then(() => loadPrompts());
+}
+
+
