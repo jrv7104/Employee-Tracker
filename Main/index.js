@@ -388,6 +388,28 @@ function deleteRole() {
       })
   }
 
+  function deleteDepartment() {
+    db.findDepartments()
+      .then(([rows]) => {
+        let departments = rows;
+        const departmentChoices = departments.map(({ id, name }) => ({
+          name: name,
+          value: id
+        }));
+  
+        prompt({
+          type: "list",
+          name: "departmentId",
+          message:
+            "Which department will be deleted? (Warning: This will also delete associated roles and employees for selected departments)",
+          choices: departmentChoices
+        })
+          .then(res => db.removeDepartment(res.departmentId))
+          .then(() => console.log(`Removed department from the database`))
+          .then(() => loadMainPrompts())
+      })
+  }
+
   function viewDepartments() {
     db.findAllDepartments()
       .then(([rows]) => {
