@@ -213,7 +213,7 @@ function findEmployeeByManager() {
             ])
               .then(res => db.deleteEmployee(res.employeeId))
               .then(() => console.log("Removed employee from the database"))
-              .then(() => loadMainPrompts())
+              .then(() => loadPrompts())
           })
       }
 
@@ -254,7 +254,7 @@ function findEmployeeByManager() {
                     ])
                       .then(res => db.updateEmployee(employeeId, res.roleId))
                       .then(() => console.log("Updated employee's role"))
-                      .then(() => loadMainPrompts())
+                      .then(() => loadPrompts())
                   });
               });
           })
@@ -298,14 +298,14 @@ function findEmployeeByManager() {
                     ])
                       .then(res => db.updateEmployeeManager(employeeId, res.managerId))
                       .then(() => console.log("Updated employee's manager"))
-                      .then(() => loadMainPrompts())
+                      .then(() => loadPrompts())
                   })
               })
           })
       }
 
 function addRole() {
-    db.findAllDepartments()
+    db.findDepartment()
       .then(([rows]) => {
         let departments = rows;
         const departmentChoices = departments.map(({ id, name }) => ({
@@ -332,7 +332,7 @@ function addRole() {
           .then(role => {
             db.createRole(role)
               .then(() => console.log(`Added ${role.title} to the database`))
-              .then(() => loadMainPrompts())
+              .then(() => loadPrompts())
           })
       })
   }
@@ -367,7 +367,7 @@ function deleteRole() {
         ])
           .then(res => db.removeRole(res.roleId))
           .then(() => console.log("Role removed from the database"))
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       })
   }
 
@@ -380,9 +380,9 @@ function deleteRole() {
     ])
       .then(res => {
         let name = res;
-        db.createDepartment(name)
+        db.addDepartment(name)
           .then(() => console.log(`Added ${name.name} to the database`))
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       })
   }
 
@@ -404,7 +404,7 @@ function deleteRole() {
         })
           .then(res => db.removeDepartment(res.departmentId))
           .then(() => console.log(`Removed department from the database`))
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       })
   }
 
