@@ -10,6 +10,7 @@ VALUES
 
 INSERT INTO role
 (title, salary, department_id)
+VALUES
 ('Sales Representative', 70000, 1),
 ('Sales Manager', 90000, 1),
 ('Accountant', 10000, 2),
@@ -20,12 +21,13 @@ INSERT INTO role
 ('Legal Team Manager', 200000, 4);
 
 INSERT INTO employee
+VALUES
     (first_name, last_name, role_id, manager_id)
     ('Jake', 'Peralta', 1, NULL,)
-    ('Doug', 'Judy', 2, 1,)
+    ('Doug', 'Judy', 2, 2,)
     ('Rosa', 'Diaz', 3, NULL,)
-    ('Amy', 'Santiago', 4, 2,)
+    ('Amy', 'Santiago', 4, 4,)
     ('Gina', 'Linetti', 5, NULL,)
-    ('Terry', 'Jeffords', 6, 3,)
+    ('Terry', 'Jeffords', 6, 6,)
     ('Madeline', 'Wuntch', 7, NULL,)
-    ('Raymond', 'Holt', 8, 4,)
+    ('Raymond', 'Holt', 8, 8,)
