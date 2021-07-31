@@ -305,3 +305,48 @@ function findEmployeeByManager() {
               })
           })
       }
+
+function addRole() {
+    db.findAllDepartments()
+      .then(([rows]) => {
+        let departments = rows;
+        const departmentChoices = departments.map(({ id, name }) => ({
+          name: name,
+          value: id
+        }));
+  
+        prompt([
+          {
+            name: "title",
+            message: "What is the title of the role?"
+          },
+          {
+            name: "salary",
+            message: "How much is the role worth?"
+          },
+          {
+            type: "list",
+            name: "department_id",
+            message: "What department does the role go to?",
+            choices: departmentChoices
+          }
+        ])
+          .then(role => {
+            db.createRole(role)
+              .then(() => console.log(`Added ${role.title} to the database`))
+              .then(() => loadMainPrompts())
+          })
+      })
+  }
+
+function viewRoles () {
+    db.findAllRoles()
+      .then(([rows]) => {
+        let roles = rows;
+        console.log("\n");
+        console.table(roles);
+      })
+      .then(() => loadMainPrompts());
+  }
+
+
