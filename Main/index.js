@@ -104,10 +104,28 @@ function loadPrompts() {
         case "VIEW_DEPARTMENTS":
                 viewDepartments();
                 break;
-            case "ADD_DEPARTMENT":
+        case "ADD_DEPARTMENT":
                 addDepartment();
                 break;
-            case "REMOVE_DEPARTMENT":
+        case "REMOVE_DEPARTMENT":
                 removeDepartment();
-                    break;                
+                break;
+        case "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT":
+                viewUtilizedBudgetByDepartment();
+                break;
+        case "VIEW_ROLES":
+                viewRoles();
+                break;
+        case "ADD_ROLE":
+                addRole();
+                break;
+        case "REMOVE_ROLE":
+                removeRole();
+                break;
+            default:
+                quit();
+        }
+    }
+)
+}
                 
