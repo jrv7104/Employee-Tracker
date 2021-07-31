@@ -497,3 +497,8 @@ function deleteRole() {
             })
         })
     }
+
+    function exit() {
+        console.log("Have a great day!");
+        process.exit();
+    }
