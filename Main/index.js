@@ -146,3 +146,20 @@ function findEmployeesByDepartment() {
             name: name,
             value: id
         }));
+
+        prompt([
+            {
+                type: "list",
+                name: "departmentID",
+                message: "What department do you want to see?",
+                choices: departmentChoices
+            }
+        ])
+        .then(res => db.findEmployeesByDepartment(res.departmentID)). then (([rows]) => {
+            let employees = rows;
+            console.log("\n");
+            console.table(employees);
+        })
+        .then(() => loadPrompts())
+    });
+}
