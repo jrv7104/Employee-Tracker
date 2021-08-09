@@ -3,9 +3,9 @@ USE employees;
 INSERT INTO department
 (name)
 VALUES
-('Sales')
-('Finance')
-('Engineering')
+('Sales'),
+('Finance'),
+('Engineering'),
 ('Legal');
 
 INSERT INTO role
@@ -20,14 +20,13 @@ VALUES
 ('Lawyer', 16000, 4),
 ('Legal Team Manager', 200000, 4);
 
-INSERT INTO employee
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-    (first_name, last_name, role_id, manager_id)
-    ('Jake', 'Peralta', 1, NULL,)
-    ('Doug', 'Judy', 2, 2,)
-    ('Rosa', 'Diaz', 3, NULL,)
-    ('Amy', 'Santiago', 4, 4,)
-    ('Gina', 'Linetti', 5, NULL,)
-    ('Terry', 'Jeffords', 6, 6,)
-    ('Madeline', 'Wuntch', 7, NULL,)
-    ('Raymond', 'Holt', 8, 8,);
+    ('Jake', 'Peralta', 1, NULL),
+    ('Doug', 'Judy', 2, 2),
+    ('Rosa', 'Diaz', 3, NULL),
+    ('Amy', 'Santiago', 4, 4),
+    ('Gina', 'Linetti', 5, NULL),
+    ('Terry', 'Jeffords', 6, 6),
+    ('Madeline', 'Wuntch', 7, NULL),
+    ('Raymond', 'Holt', 8, 8);
