@@ -1,5 +1,5 @@
 This is an employee tracker that would ideally allow users to update their employee information. In addition to being able to add several employees at once using mySQL, there is a function to edit the database, whether it involves adding, deleting or changing an employee's information.
 
-Despite the effort into this project I have ran into a few unintended errors. The first one using mySQL has errors building up the original database. On top of that, some of the functions using node index.js to edit the database don't work the way I intended them. With the exceptions of the errors, while I am happy with the progress made, this is another project that I definitely hope to work on more in the future and possibly resubmit for grading. I figured it would be best to show what I have done now, see what feedback I get and then possibly use that feedback to help complete this project.
+Most of the functions of this code does work. It currently allows users to view all employees, view all employees by department, view roles and add employees. One thing I would like for it to do one day with more work is to view all possible managers, remove employee and update employee role and manager.
 
-Video walkthrough: https://drive.google.com/file/d/1GAMSHzMAWtC-XrdMKZWIY5uTl6Rqrl6v/view
+Video walkthrough: https://drive.google.com/file/d/1ejrWzqESGDb4zzhBXs7M8aviugs0gMgl/view
