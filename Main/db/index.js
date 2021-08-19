@@ -14,7 +14,7 @@ findEmployees()  {
 findPossibleManagers(employeeID) {
     return this.connection.promise().query(
         'SELECT id, first_name, last_name FROM employee WHERE id != ?',
-        employeeId
+        employeeID
         );
     }
 
@@ -24,16 +24,23 @@ createEmployee(employee) {
 
 deleteEmployee (employeeId) {
     return this.connection.promise().query(
-        "DELETE FROM employee WHERE id = ?",
-        );
+        "DELETE FROM employee WHERE id = ?", employeeId);
+        
     }
 
 updateEmployee(employeeID, roleID) {
     return this.connection.promise().query(
         "UPDATE employee SET role_id = ? WHERE id = ?",
-        [roleId, employeeId]
+        [roleID, employeeID]
         );
     }
+
+    updateEmployeeManager(employeeID, managerID) {
+        return this.connection.promise().query(
+            "UPDATE employee SET manager_id = ? WHERE id = ?",
+            [managerID, employeeID]
+            );
+        }
 
 findRole() {
     return this.connection.promise().query(
@@ -41,7 +48,7 @@ findRole() {
         );
     }
 
-createROLE(role) {
+createRole(role) {
     return this.connection.promise().query("INSERT INTO role SET ?", role);
     }
 
