@@ -24,8 +24,8 @@ function loadPrompts() {
                     value: "VIEW_EMPLOYEES_BY_DEPARTMENT"
                 },
                 {
-                    name: "View All Possible Managers",
-                    value: "VIEW_POSSIBLE_MANAGERS"
+                    name: "View All Employees By Managers",
+                    value: "VIEW_EMPLOYEES_BY_MANAGER"
                 },
                 {
                     name: "Add Employee",
@@ -89,6 +89,9 @@ function loadPrompts() {
         case "VIEW_EMPLOYEES_BY_MANAGER":
                 findEmployeeByManager();
                 break;
+        // case "VIEW_ALL_POSSIBLE_MANAGERS":
+        //         viewPossibleManagers();
+        //         break;
         case "ADD_EMPLOYEE":
                 addEmployee();
                 break;
@@ -107,10 +110,10 @@ function loadPrompts() {
         case "ADD_DEPARTMENT":
                 addDepartment();
                 break;
-        case "REMOVE_DEPARTMENT":
+        case "DELETE_DEPARTMENT":
                 deleteDepartment();
                 break;
-        case "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT":
+        case "VIEW_BUDGET_BY_DEPARTMENT":
                 viewDepartmentBudget();
                 break;
         case "VIEW_ROLES":
@@ -120,8 +123,9 @@ function loadPrompts() {
                 addRole();
                 break;
         case "REMOVE_ROLE":
-                removeRole();
+                deleteRole();
                 break;
+
             default:
                 exit();
         }
@@ -305,7 +309,7 @@ function findEmployeeByManager() {
       }
 
 function addRole() {
-    db.findDepartment()
+    db.findDepartments()
       .then(([rows]) => {
         let departments = rows;
         const departmentChoices = departments.map(({ id, name }) => ({
@@ -348,7 +352,7 @@ function viewRoles () {
   }
 
 function deleteRole() {
-    db.findAllRoles()
+    db.findRole()
       .then(([rows]) => {
         let roles = rows;
         const roleChoices = roles.map(({ id, title }) => ({
@@ -365,7 +369,7 @@ function deleteRole() {
             choices: roleChoices
           }
         ])
-          .then(res => db.removeRole(res.roleId))
+          .then(res => db.deleteRole(res.roleId))
           .then(() => console.log("Role removed from the database"))
           .then(() => loadPrompts())
       })
@@ -380,7 +384,7 @@ function deleteRole() {
     ])
       .then(res => {
         let name = res;
-        db.addDepartment(name)
+        db.newDepartment(name)
           .then(() => console.log(`Added ${name.name} to the database`))
           .then(() => loadPrompts())
       })
@@ -397,12 +401,12 @@ function deleteRole() {
   
         prompt({
           type: "list",
-          name: "departmentId",
+          name: "departmentID",
           message:
             "Which department will be deleted? (Warning: This will also delete associated roles and employees for selected departments)",
           choices: departmentChoices
         })
-          .then(res => db.removeDepartment(res.departmentId))
+          .then(res => db.deleteDepartment(res.departmentID))
           .then(() => console.log(`Removed department from the database`))
           .then(() => loadPrompts())
       })
@@ -419,7 +423,7 @@ function deleteRole() {
   }
 
   function viewDepartmentBudget() {
-    db.viewDepartmentBudgets()
+    db.viewDepartmentBudget()
       .then(([rows]) => {
         let departments = rows;
         console.log("\n");
