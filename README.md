@@ -4,4 +4,4 @@ You start by running the schema.sql file, then seed.sql file, then run node inde
 
 After a couple of attempts and some help, all of the functions now work. It feels great that all of the functions are now live.
 
-Video walkthrough: https://drive.google.com/file/d/1ejrWzqESGDb4zzhBXs7M8aviugs0gMgl/view
+Video walkthrough: https://drive.google.com/file/d/1RE5FtPfWpZyn5H9Ztc7rXs4utz7Go3bW/view
